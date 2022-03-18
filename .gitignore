@@ -1,0 +1,12 @@
+./tika/data/*
+./tika/DIM1/*
+./tika/DIM-1/*
+./tika/playerdata/*
+./tika/stats/*
+./tika/structures/*
+./tika/forcedchunks.dat
+./tika/icon.png
+./tika/level.dat
+./tika/level.dat_old
+./tika/Readme.txt
+./tika/session.lock

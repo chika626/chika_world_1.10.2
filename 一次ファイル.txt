@@ -1,0 +1,97 @@
+# 超作業台メモ
+# 一時ドロッパー (-2721 70 -355)
+# ユーザー側ドロッパー (-2739 90 -362)
+# A起動部 (-2738 70 -353)
+# レシピ登録開始場所 (-2737 70 -369)
+# レシピ登録終了場所 (-2721 70 -354)
+# わからん (-2735 70 -390) たぶんレシピ開始と同じでいい.
+# B開始地点 (-2721 70 -353)
+# 成功時パーティクル位置 (-2739 92 -362)
+
+# 起動部分
+/clone -2738 70 -353 -2738 70 -353 -2738 70 -353 filtered force minecraft:command_block
+/clone -2737 70 -369 -2721 70 -354 -2737 70 -369 filtered force minecraft:command_block 1
+
+# A
+/clone -2739 90 -362 -2739 90 -362 -2721 70 -355 filtered normal minecraft:dropper
+/clone -2735 70 -390 -2721 70 -354 -2735 70 -390 filtered force minecraft:command_block
+/clone -2721 70 -353 -2721 70 -353 -2721 70 -353 filtered force minecraft:command_block
+
+# B
+/testforblocks ~ ~ ~-2 ~ ~ ~-2 -2739 90 -362	 
+/execute 0-0-1-0-1 -2739 90 -362 /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587	
+/particle smoke -2739 92 -362 1 1 1 0 50 force
+/blockdata ~ ~-3 ~ {SuccessCount:1}	 
+/execute 0-0-1-0-1 -2739 90 -362 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
+/particle happyVillager -2739 92 -362 1 1 1 0 50 force	
+/clone -2721 70 -355 -2721 70 -355 -2739 90 -362
+
+
+# 魔女の醸造台メモ
+# 一時醸造台 (1132 10 67)
+# ユーザー側醸造台 (1116 5 21)
+# A起動e部 (1132 9 62)
+# レシピ登録開始場所 (1132 3 72)
+# レシピ登録終了場所 (1124 3 61)
+# わからん (1124 3 61) たぶんレシピ開始と同じでいい.
+# B開始地点 (1126 9 62)
+# 成功時パーティクル位置 (1116 6 21)
+
+
+# 書き換えたバージョン！！
+# 起動部分
+/clone 1132 9 62 1132 9 62 1132 9 62 filtered force minecraft:command_block
+/clone 1132 3 72 1124 3 61 1124 3 61 filtered force minecraft:command_block 1
+
+# A
+/clone 1116 5 21 1116 5 21 1132 10 67 filtered normal minecraft:brewing_stand # 成功
+/clone 1132 3 72 1124 3 61 1124 3 61 filtered force minecraft:command_block
+/clone 1126 9 62 1126 9 62 1126 9 62 filtered force minecraft:command_block
+
+# B
+/testforblocks 1132 10 67 1132 10 67 1116 5 21
+/execute 0-0-1-0-1 1116 5 21 /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587
+/particle smoke 1116 6 21 1 1 1 0 50 force
+/blockdata ~ ~-3 ~ {SuccessCount:1}	 
+/execute 0-0-1-0-1 1116 5 21 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
+/icle happyVillager 1116 6 21 1 1 1 0 50 force	
+/clone 1132 10 67 1132 10 67 1116 5 21
+
+
+
+# 魔女の抽出台メモ
+# 一時ホッパー (1091 9 2)
+# 一時醸造台 (1091 9 1)
+# ユーザー側ホッパー (1116 5 26)
+# ユーザー側醸造台 (1116 5 25)
+# A起動部 (1091 8 -4)
+# レシピ登録開始場所 (1090 4 9)
+# レシピ登録終了場所 (1077 4 -5)
+# B開始地点 (1086 8 -4)
+# 成功時パーティクル位置 (1116 6 25)
+
+
+# 書き換えたバージョン！！
+# 起動部分
+/clone 1091 8 -4 1091 8 -4 1091 8 -4 filtered force minecraft:command_block
+/clone 1090 4 9 1077 4 -5 1077 4 -5 filtered force minecraft:command_block 1
+
+# A
+/clone 1116 5 26 1116 5 26 1091 9 2 filtered normal minecraft:hopper
+/clone 1090 4 9 1077 4 -5 1077 4 -5 filtered force minecraft:command_block
+/clone 1086 8 -4 1086 8 -4 1086 8 -4 filtered force minecraft:command_block
+
+# B
+# これは結果を映すので、醸造台
+/testforblocks 1091 9 1 1091 9 1 1116 5 25
+/execute 0-0-1-0-1 1116 5 26 /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587
+/particle smoke 1116 6 25 1 1 1 0 50 force
+/blockdata ~ ~-3 ~ {SuccessCount:1}	 
+/execute 0-0-1-0-1 1116 5 26 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
+/icle happyVillager 1116 6 25 1 1 1 0 50 force	
+/clone 1091 9 1 1091 9 1 1116 5 25
+# 最後にホッパーの中身を消すコマンドも欲しいかもね
+
+# 変換用
+/testforblocks ~-1 ~ ~ ~-1 ~ ~ 1091 9 2
+/clone ~-1 ~ ~ ~-1 ~ ~ 1091 9 1

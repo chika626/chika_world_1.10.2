@@ -54,15 +54,15 @@
 /particle smoke 1116 6 21 1 1 1 0 50 force
 /blockdata ~ ~-3 ~ {SuccessCount:1}	 
 /execute 0-0-1-0-1 1116 5 21 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
-/icle happyVillager 1116 6 21 1 1 1 0 50 force	
+/particle happyVillager 1116 6 21 1 1 1 0 50 force	
 /clone 1132 10 67 1132 10 67 1116 5 21
 
 
 
-# 魔女の抽出台メモ
-# 一時ホッパー (1091 9 2)
+# 魔女の抽出台メモ 粉砕機
+# 一時ホッパー (1091 9 2) → これがいらなくなる　一時醸造台と合併でよくなる
 # 一時醸造台 (1091 9 1)
-# ユーザー側ホッパー (1116 5 26)
+# ユーザー側ホッパー (1116 5 26) → これがいらなくなる　ユーザー側醸造台と合併でよくなる
 # ユーザー側醸造台 (1116 5 25)
 # A起動部 (1091 8 -4)
 # レシピ登録開始場所 (1090 4 9)
@@ -77,21 +77,20 @@
 /clone 1090 4 9 1077 4 -5 1077 4 -5 filtered force minecraft:command_block 1
 
 # A
-/clone 1116 5 26 1116 5 26 1091 9 2 filtered normal minecraft:hopper
+/clone 1116 5 25 1116 5 25 1091 9 1 filtered normal minecraft:hopper
 /clone 1090 4 9 1077 4 -5 1077 4 -5 filtered force minecraft:command_block
 /clone 1086 8 -4 1086 8 -4 1086 8 -4 filtered force minecraft:command_block
 
 # B
 # これは結果を映すので、醸造台
 /testforblocks 1091 9 1 1091 9 1 1116 5 25
-/execute 0-0-1-0-1 1116 5 26 /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587
+/execute 0-0-1-0-1 1116 5 25 /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587
 /particle smoke 1116 6 25 1 1 1 0 50 force
 /blockdata ~ ~-3 ~ {SuccessCount:1}	 
-/execute 0-0-1-0-1 1116 5 26 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
-/icle happyVillager 1116 6 25 1 1 1 0 50 force	
+/execute 0-0-1-0-1 1116 5 25 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
+/particle happyVillager 1116 6 25 1 1 1 0 50 force	
 /clone 1091 9 1 1091 9 1 1116 5 25
-# 最後にホッパーの中身を消すコマンドも欲しいかもね
 
 # 変換用
-/testforblocks ~-1 ~ ~ ~-1 ~ ~ 1091 9 2
+/testforblocks ~-1 ~ ~ ~-1 ~ ~ 1091 9 1
 /clone ~-1 ~ ~ ~-1 ~ ~ 1091 9 1

@@ -1,0 +1,62 @@
+# 超作業台メモ
+# 一時ドロッパー (-2721 70 -355)
+# ユーザー側ドロッパー (-2739 90 -362)
+# A起動部 (-2738 70 -353)
+# レシピ登録開始場所 (-2737 70 -369)
+# レシピ登録終了場所 (-2721 70 -354)
+# わからん (-2735 70 -390) たぶんレシピ開始と同じでいい.
+# B開始地点 (-2721 70 -353)
+# 成功時パーティクル位置 (-2739 92 -362)
+
+# 起動部分
+/clone -2738 70 -353 -2738 70 -353 -2738 70 -353 filtered force minecraft:command_block
+/clone -2737 70 -369 -2721 70 -354 -2737 70 -369 filtered force minecraft:command_block 1
+
+# A
+/clone -2739 90 -362 -2739 90 -362 -2721 70 -355 filtered normal minecraft:dropper
+/clone -2735 70 -390 -2721 70 -354 -2735 70 -390 filtered force minecraft:command_block
+/clone -2721 70 -353 -2721 70 -353 -2721 70 -353 filtered force minecraft:command_block
+
+# B
+/testforblocks ~ ~ ~-2 ~ ~ ~-2 -2739 90 -362	 
+/execute 0-0-1-0-1 -2739 90 -362 /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587	
+/particle smoke -2739 92 -362 1 1 1 0 50 force
+/blockdata ~ ~-3 ~ {SuccessCount:1}	 
+/execute 0-0-1-0-1 -2739 90 -362 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
+/particle happyVillager -2739 92 -362 1 1 1 0 50 force	
+/clone -2721 70 -355 -2721 70 -355 -2739 90 -362
+
+
+# 魔女の醸造台メモ
+# 一時醸造台 (変数一時醸造台)
+# ユーザー側醸造台 (変数ユーザー側醸造台)
+# A起動部 (変数A起動部)
+# レシピ登録開始場所 (変数シピ登録開始場所)
+# レシピ登録終了場所 (変数レシピ登録終了場所)
+# B開始地点 (変数B開始地点)
+# 成功時パーティクル位置 (変数成功時パーティクル位置)
+
+開始場所 1132 3 72
+終了場所 1124 3 64
+
+# 書き換えたバージョン！！
+# 起動部分
+/clone 変数A起動部 変数A起動部 変数A起動部 filtered force minecraft:command_block
+/clone 変数シピ登録開始場所 変数レシピ登録終了場所 変数レシピ登録終了場所 filtered force minecraft:command_block 1
+
+# A
+/clone 変数ユーザー側醸造台 変数ユーザー側醸造台 変数一時醸造台 filtered normal minecraft:brewing_stand # 成功
+/clone 変数シピ登録開始場所 変数レシピ登録終了場所 変数レシピ登録終了場所 filtered force minecraft:command_block
+/clone 変数B開始地点 変数B開始地点 変数B開始地点 filtered force minecraft:command_block
+
+# B
+/testforblocks 変数一時醸造台 変数一時醸造台 変数ユーザー側醸造台
+/execute 0-0-1-0-1 変数ユーザー側醸造台 /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587
+/particle smoke 変数成功時パーティクル位置 1 1 1 0 50 force
+/blockdata ~ ~-3 ~ {SuccessCount:1}	 
+/execute 0-0-1-0-1 変数ユーザー側醸造台 /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
+/particle happyVillager 変数成功時パーティクル位置 1 1 1 0 50 force	
+/clone 変数一時醸造台 変数一時醸造台 変数ユーザー側醸造台
+
+
+

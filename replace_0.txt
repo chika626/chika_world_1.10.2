@@ -1,0 +1,33 @@
+# 魔女の抽出台メモ 粉砕機
+# 一時ホッパー (変数一時ホッパー)
+# ユーザー側ホッパー (変数ユーザー側ホッパー)
+# A起動部 (変数粉砕A起動部)
+# レシピ登録開始場所 (変数粉砕レシピ登録開始場所)
+# レシピ登録終了場所 (変数粉砕レシピ登録終了場所)
+# B開始地点 (変数粉砕B開始地点)
+# 成功時パーティクル位置 (変数粉砕成功時パーティクル位置)
+
+
+# 書き換えたバージョン！！
+# 起動部分
+/clone 変数粉砕A起動部 変数粉砕A起動部 変数粉砕A起動部 filtered force minecraft:command_block
+/clone 変数粉砕レシピ登録開始場所 変数粉砕レシピ登録終了場所 変数粉砕レシピ登録終了場所 filtered force minecraft:command_block 1
+
+# A
+/clone 変数ユーザー側ホッパー 変数ユーザー側ホッパー 変数一時ホッパー filtered normal minecraft:hopper
+/clone 変数粉砕レシピ登録開始場所 変数粉砕レシピ登録終了場所 変数粉砕レシピ登録終了場所 filtered force minecraft:command_block
+/clone 変数粉砕B開始地点 変数粉砕B開始地点 変数粉砕B開始地点 filtered force minecraft:command_block
+
+# B
+# これは結果を映すので、醸造台
+/testforblocks 変数一時ホッパー 変数一時ホッパー 変数ユーザー側ホッパー
+/execute 0-0-1-0-1 変数ユーザー側ホッパー /playsound minecraft:entity.item.break master @a[r=12] ~ ~ ~ 1 1.587
+/particle smoke 変数粉砕成功時パーティクル位置 1 1 1 0 50 force
+/blockdata ~ ~-3 ~ {SuccessCount:1}	 
+/execute 0-0-1-0-1 変数ユーザー側ホッパー /playsound block.anvil.use master @a[r=12] ~ ~ ~ 1 1.587	
+/particle happyVillager 変数粉砕成功時パーティクル位置 1 1 1 0 50 force	
+/clone 変数一時ホッパー 変数一時ホッパー 変数ユーザー側ホッパー
+
+# 変換用
+/testforblocks ~-1 ~ ~ ~-1 ~ ~ 変数一時ホッパー
+/clone ~-1 ~ ~ ~-1 ~ ~ 変数一時ホッパー
